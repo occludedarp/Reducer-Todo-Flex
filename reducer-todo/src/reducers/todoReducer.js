@@ -1,13 +1,13 @@
 export const todoInitialState = {
   todos: [],
-  itemName: ' '
 }
 
 export const todoReducer = (state, action) => {
-  switch(action.type) {
+  switch (action.type) {
+    
     case 'ADD_TODO':
       const newItem = {
-        todo: state.itemName,
+        todo: action.payload,  //<<<<< does this todo item object have to be mirrored in the initial state?
         id: Date.now(),
         completed: false
       }
@@ -15,12 +15,31 @@ export const todoReducer = (state, action) => {
         ...state,
         todos: [...state.todos, newItem]
       }
-    case 'HANDLE_CHANGES':
+      
+      // case 'HANDLE_CHANGES':
+      //   return {
+        //     ...state,
+        //     itemName: action.payload
+        //   };
+        
+    case 'TOGGLE_COMPLETED':
+      const completedTodos = state.todos.map(todoItem => 
+          `${todoItem.id}` === action.payload 
+        ? 
+          {...todoItem,
+            completed: !todoItem.completed
+          } 
+        : 
+          todoItem
+        )
+        
       return {
         ...state,
-        itemName: action.payload
-      }     
+        todos: completedTodos
+      }
+      
+      default:
+        return state;
   }
-
+            
 }
-

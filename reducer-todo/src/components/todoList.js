@@ -6,7 +6,7 @@ const TodoList = props => {
   return(
     <div>
       <TodoItems />
-      <TodoForm handleChanges={props.handleChanges} />
+      <TodoForm />
     </div>
   )
 }

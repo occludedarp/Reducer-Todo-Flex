@@ -4,12 +4,7 @@ import { todoReducer, todoInitialState } from '../reducers/todoReducer';
 
 const TodoForm = props => {
 
-  const [state, dispatch] = useReducer(todoReducer, todoInitialState)
-  const [itemName, setItemName] = useState(' ')
 
-  const handleChanges = (e) => {
-    setItemName(e.target.value) 
-  }
 
   return(
     <div>
@@ -17,12 +12,12 @@ const TodoForm = props => {
         <input 
           name="itemName"
           type="text"
-          value={itemName}
-          onChange={handleChanges}
+          value={props.itemName}
+          onChange={props.handleChanges}
         />
 
-        <button onClick={() => dispatch({type: 'ADD_TODO', payload: itemName})} type="submit">Add</button>
-        <button onClick={() => dispatch({type: 'CLEAR_COMPLETED'})}>Clear Completed</button>
+        <button onClick={() => props.addTodo(props.itemName)} type="submit">Add</button>
+        <button onClick={() => props.clearCompleted()}>Clear Completed</button>
 
       </form>
     </div>

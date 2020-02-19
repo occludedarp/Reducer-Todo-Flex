@@ -1,21 +1,19 @@
 import React, { useReducer } from 'react';
-import { todoReducer, todoInitialState } from '../reducers/todoReducer';
 
 
-const TodoItems = () => {
-  const [state, dispatch] = useReducer(todoReducer, todoInitialState)
+const TodoItems = (props) => {
 
   return(
-    <div>
+    <div style={{"width": "250px"}}>
       <ul>
-        {state.todos.map((todoObj, index) => (
+        {props.todos.map((todoObj, index) => (
           <li 
             className={`item${todoObj.completed ? 'completed' : ''}`}
-            onClick={(e) => dispatch({type: 'TOGGLE_COMPLETED', payload: e.target.id})}
+            onClick={(e) => props.handleClick(e)}
             id={todoObj.id} 
             key={index} 
           >
-            {state.itemName}
+            {todoObj.todo}
           </li>
         ))}
       </ul>

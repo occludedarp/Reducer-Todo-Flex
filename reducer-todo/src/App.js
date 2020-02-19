@@ -6,6 +6,7 @@ function App() {
 
   return (
     <div className="App">
+      <h3>get sh*t done</h3>
       <TodoList />
     </div>
   );

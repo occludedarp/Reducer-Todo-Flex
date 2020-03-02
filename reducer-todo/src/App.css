@@ -1,0 +1,20 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5% auto;
+  background-color: whitesmoke;
+  border: 1px solid #282c34;
+  border-radius: 15px;
+  width: 500px;
+  height: 500px;
+}
+
+.todo-title {
+  
+}
+
+.itemcompleted {
+  text-decoration: line-through;
+}
